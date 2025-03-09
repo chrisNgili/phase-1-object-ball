@@ -232,3 +232,27 @@ function playerWithTheLongestName(){
     }return longest
 }
 
+function doesLongNameStealATon(){
+    let game = gameObject()
+    let longName = 0
+    let longest = ""
+    let mostSteals = 0
+    let robber =''
+
+    for(let team in game){
+        for (let player in game[team].players){
+            if(player.length > longName){
+                longName = player.length
+                longest = player
+            }
+        }
+    }
+    for (let team in game){
+        for (let player in game[team].players){
+            if (game[team].players[player].steals > mostSteals){
+                mostSteals = game[team].players[player].steals
+                robber = player;
+            }
+        }
+    } return longest === robber     
+}
